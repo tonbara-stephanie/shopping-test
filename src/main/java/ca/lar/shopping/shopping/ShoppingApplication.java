@@ -23,19 +23,16 @@ import ca.lar.shopping.shopping.model.ShoppingOption;
 
 
 @SpringBootApplication
-public class ShoppingApplication extends SpringBootServletInitializer {
+public class ShoppingApplication {
 
 	public static long sleep = 2;
+	public static Boolean restat = Boolean.FALSE; 
 	private static ConfigurableApplicationContext context;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(ShoppingApplication.class, args);
 	}
 	
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-		return  builder.sources(ShoppingApplication.class);
-	}
 	
     public static void restart() {
         
@@ -79,7 +76,7 @@ public class ShoppingApplication extends SpringBootServletInitializer {
 		public List<MerchantShopping> findAll() {
 			sleep= sleep +10; 
 			
-			if(sleep > 500 && sleep > 510) {
+			if(100 < sleep  && sleep < 150) {
 				ShoppingApplication.restart();
 			}
 			
